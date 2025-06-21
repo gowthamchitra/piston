@@ -21,7 +21,7 @@ const options = {
         desc: 'Absolute path to store all piston related data at',
         default: process.env.PISTON_DATA_DIRECTORY || '/tmp/piston',
         validators: [
-            x => fss.exists_sync(x) || `Directory ${x} does not exist`,
+            x => fss.existsSync(x) || `Directory ${x} does not exist`,
         ],
     },
     runner_uid_min: {
