@@ -1,6 +1,8 @@
 const fss = require('fs');
 const Logger = require('logplease');
 const logger = Logger.create('config');
+const parse_int = x => parseInt(x, 10);
+const is_nan = x => Number.isNaN(x);
 
 const options = {
     log_level: {
@@ -218,7 +220,7 @@ logger.info(`Loading Configuration from environment`);
 let config = {};
 
 for (const option_name in options) {
-    const env_key = 'PISTON_' + option_name.to_upper_case();
+    const env_key = 'PISTON_' + option_name.toUpperCase();
     const option = options[option_name];
     const parser = option.parser || (x => x);
     const env_val = process.env[env_key];
